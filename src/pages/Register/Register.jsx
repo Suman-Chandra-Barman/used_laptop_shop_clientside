@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
   const {
@@ -9,17 +10,51 @@ const Register = () => {
     reset,
     handleSubmit,
   } = useForm();
-  const [loginError, setLoginError] = useState(" ");
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const [signUpError, setSignUpError] = useState("");
 
-  const handleLogin = (data) => {
+  const handleRegister = (data) => {
     console.log(data);
+    createUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setSignUpError("");
+        reset();
+        const userInfo = {
+          displayName: data.name,
+        };
+        // user profile update
+        updateUserProfile(user, userInfo)
+          .then(() => {})
+          .catch((error) => {
+            console.log(error);
+            setSignUpError(error.message);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <div className="flex justify-center items-center text-black my-20">
       <div className="w-[450px] rounded-2xl shadow-xl p-7">
         <h3 className="text-2xl text-center">Register Now</h3>
-        <form onSubmit={handleSubmit(handleLogin)}>
+        <form onSubmit={handleSubmit(handleRegister)}>
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text text-black">Name</span>
+            </label>
+            <input
+              {...register("name", { required: true })}
+              type="text"
+              className="input input-bordered w-full border-gray-400"
+            />
+            {errors.name && errors.name?.type === "required" && (
+              <p className="text-error">Name is required</p>
+            )}
+          </div>
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text text-black">Email</span>
@@ -38,22 +73,44 @@ const Register = () => {
               <span className="label-text text-black">Password</span>
             </label>
             <input
-              type="password"
               {...register("password", {
                 required: "Password is required",
-                minLength: 6,
+                minLength: {
+                  value: 6,
+                  message: "Password must be 6 characters or longer",
+                },
+                pattern: {
+                  value:
+                    /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                  message: "Please provide stronger password",
+                },
               })}
+              type="password"
               className="input input-bordered w-full border-gray-400"
               autoComplete="true"
             />
             {errors.password && (
-              <p className="text-error">{errors.password?.message}</p>
+              <p className="text-error">{errors.password.message}</p>
             )}
-            {errors.password && errors.password.type === "minLength" && (
-              <span className="text-error">Password must be 6 characters</span>
-            )}
-            {loginError && <p className="text-error">{loginError}</p>}
           </div>
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text">Select Your Role?</span>
+            </label>
+            <select
+              className="select select-bordered"
+              {...register("role", { required: "Role is required" })}
+            >
+              <option value="buyer" selected>
+                Buyer
+              </option>
+              <option value="seller">Seller</option>
+            </select>
+            {errors.role && (
+              <p className="text-error">{errors.email?.message}</p>
+            )}
+          </div>
+          {signUpError && <p className="text-error">{signUpError}</p>}
           <input
             className="btn btn-info w-full mt-3"
             type="submit"
