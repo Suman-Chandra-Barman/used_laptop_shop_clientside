@@ -1,0 +1,74 @@
+[
+  {
+    "brand": "HP",
+    "brandId": 1,
+    "model": "Hp Tu007",
+    "image": "https://via.placeholder.com/640x360",
+    "location": "Dhaka",
+    "original-price": 60500,
+    "resale-price": 35000,
+    "use": "2 year",
+    "time": "2019-01-31T10:00:00.000Z",
+    "seller-name": "Jaki Cao"
+  },
+  {
+    "brand": "HP",
+    "brandId": 1,
+    "model": "Hp Tu009",
+    "image": "https://via.placeholder.com/640x360",
+    "location": "Rangpur",
+    "original-price": 50500,
+    "resale-price": 40000,
+    "use": "1 year",
+    "time": "2019-01-31T10:00:00.000Z",
+    "seller-name": "Makron Di"
+  },
+  {
+    "brand": "Dell",
+    "brandId": 2,
+    "model": "dell du047",
+    "image": "https://via.placeholder.com/640x360",
+    "location": "Dhaka",
+    "original-price": 60500,
+    "resale-price": 35000,
+    "use": "2 year",
+    "time": "2019-01-31T10:00:00.000Z",
+    "seller-name": "Jabi Cao"
+  },
+  {
+    "brand": "Dell",
+    "brandId": 2,
+    "model": "dell Tu007",
+    "image": "https://via.placeholder.com/640x360",
+    "location": "Thakurgaon",
+    "original-price": 40500,
+    "resale-price": 25000,
+    "use": "3 year",
+    "time": "2019-01-31T10:00:00.000Z",
+    "seller-name": "Sam Chandra"
+  },
+  {
+    "brand": "Apple",
+    "brandId": 3,
+    "model": "apple ap007",
+    "image": "https://via.placeholder.com/640x360",
+    "location": "Dhaka",
+    "original-price": 60500,
+    "resale-price": 35000,
+    "use": "2 year",
+    "time": "2019-01-31T10:00:00.000Z",
+    "seller-name": "Jubal Barman"
+  },
+  {
+    "brand": "Apple",
+    "brandId": 3,
+    "model": "apple ap021",
+    "image": "https://via.placeholder.com/640x360",
+    "location": "Dhaka",
+    "original-price": 160500,
+    "resale-price": 120000,
+    "use": "1 year",
+    "time": "2019-01-31T10:00:00.000Z",
+    "seller-name": "Max Cao"
+  }
+]

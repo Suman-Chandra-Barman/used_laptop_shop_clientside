@@ -98,6 +98,7 @@ const Register = () => {
               <span className="label-text">Select Your Role?</span>
             </label>
             <select
+              defaultValue="buyer"
               className="select select-bordered"
               {...register("role", { required: "Role is required" })}
             >
