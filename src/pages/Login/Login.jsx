@@ -25,8 +25,9 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setLoginError("");
-        toast.success("User login successfully");
+        toast.success("Login successful!");
         reset();
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err);

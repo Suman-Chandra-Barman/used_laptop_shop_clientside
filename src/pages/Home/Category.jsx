@@ -22,7 +22,7 @@ const Category = () => {
             </figure>
             <div className="card-body">
               <h2 className="card-title">Model : {product.model}</h2>
-              <div className="md:grid grid-cols-2 gap-3 justify-between">
+              <div className="md:grid grid-cols-2 gap-2 justify-between">
                 <p className="text-lg">Seller Name : {product.sellerName}</p>
                 <p className="text-lg">Location : {product.location}</p>
                 <p className="text-lg">
