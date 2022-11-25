@@ -93,7 +93,7 @@ const AddProducts = () => {
           name="price"
           type="text"
           className="input input-bordered w-ful"
-          placeholder="Price"
+          placeholder="$ Price"
           required
         />
         <input
