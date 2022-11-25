@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
@@ -10,8 +10,13 @@ const Register = () => {
     reset,
     handleSubmit,
   } = useForm();
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, googleLogin } =
+    useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || "/";
 
   const handleRegister = (data) => {
     console.log(data);
@@ -26,7 +31,9 @@ const Register = () => {
         };
         // user profile update
         updateUserProfile(user, userInfo)
-          .then(() => {})
+          .then(() => {
+            userStore(data.name, data.email, data.account);
+          })
           .catch((error) => {
             console.log(error);
             setSignUpError(error.message);
@@ -37,6 +44,37 @@ const Register = () => {
       });
   };
 
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        setSignUpError(err.message);
+      });
+  };
+
+  const userStore = (name, email, account) => {
+    const user = { name, email, account };
+    console.log("user", user);
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          console.log(data);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="flex justify-center items-center text-black my-20">
       <div className="w-[450px] rounded-2xl shadow-xl p-7">
@@ -95,14 +133,15 @@ const Register = () => {
           </div>
           <div className="form-control w-full">
             <label className="label">
-              <span className="label-text">Select Your Role?</span>
+              <span className="label-text">Account Category?</span>
             </label>
             <select
-              defaultValue="buyer"
               className="select select-bordered"
-              {...register("role", { required: "Role is required" })}
+              {...register("account", {
+                required: "Account category is required",
+              })}
             >
-              <option value="buyer" selected>
+              <option value="buyer" defaultValue="buyer">
                 Buyer
               </option>
               <option value="seller">Seller</option>
@@ -126,7 +165,10 @@ const Register = () => {
             </Link>
           </p>
           <div className="divider">OR</div>
-          <button className="btn btn-outline w-full btn-info">
+          <button
+            onClick={handleGoogleLogin}
+            className="btn btn-outline w-full btn-info"
+          >
             CONTINUE WITH GOOGLE
           </button>
         </div>

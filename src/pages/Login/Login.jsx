@@ -85,13 +85,12 @@ const Login = () => {
               <span className="text-error">Password must be 6 characters</span>
             )}
             {loginError && <p className="text-error">{loginError}</p>}
-            <label className="label">
-              <span className="label-text-alt text-black">
-                Forgot Password ?
-              </span>
-            </label>
           </div>
-          <input className="btn btn-info w-full" type="submit" value="Login" />
+          <input
+            className="btn btn-info w-full mt-3"
+            type="submit"
+            value="Login"
+          />
         </form>
         <div>
           <p className="text-sm mt-3">
