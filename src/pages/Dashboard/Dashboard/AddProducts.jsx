@@ -46,7 +46,7 @@ const AddProducts = () => {
   return (
     <div className="p-5 md:px-10 md:w-2/3">
       <h2 className="text-3xl font-semibold text-center mb-5">
-        Product information
+        Laptop information
       </h2>
       <form onSubmit={handleAddProduct} className="grid grid-cols-1 gap-2">
         <input
@@ -83,7 +83,7 @@ const AddProducts = () => {
           required
         >
           <option disabled selected>
-            Product condition?
+            Product Condition?
           </option>
           <option>Excellent </option>
           <option defaultValue="Good">Good</option>
@@ -93,7 +93,7 @@ const AddProducts = () => {
           name="price"
           type="text"
           className="input input-bordered w-ful"
-          placeholder="$ Price"
+          placeholder="$Price"
           required
         />
         <input

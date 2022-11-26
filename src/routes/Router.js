@@ -12,6 +12,7 @@ import Register from "../pages/Register/Register";
 import PrivetRoute from "./PrivetRouter";
 import SellerRoute from "./SellerRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Blog from "../pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/category/:id",
