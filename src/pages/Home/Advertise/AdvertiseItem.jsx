@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoryCard = ({ product, setBookingData }) => {
+const AdvertiseItem = ({ product, setBookingData }) => {
   const {
     image,
     model,
@@ -38,4 +38,4 @@ const CategoryCard = ({ product, setBookingData }) => {
   );
 };
 
-export default CategoryCard;
+export default AdvertiseItem;

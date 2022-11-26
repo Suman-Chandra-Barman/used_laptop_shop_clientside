@@ -16,7 +16,6 @@ const MyProducts = () => {
   }, [user?.email, isDelete]);
 
   const handleDeleteProduct = (id) => {
-    console.log(id);
     fetch(`http://localhost:5000/category/${id}`, {
       method: "DELETE",
       headers: {
@@ -32,6 +31,27 @@ const MyProducts = () => {
       })
       .catch((error) => console.log(error));
   };
+  const handleAdvertise = (product) => {
+    const advertise = {
+      email: product.sellerEmail,
+      model: product.model,
+      productId: product._id,
+    };
+
+    fetch("http://localhost:5000/advertise", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(advertise),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div>
       <div>
@@ -57,7 +77,12 @@ const MyProducts = () => {
                   <td>{product.resalePrice}</td>
                   <td>Available</td>
                   <td>
-                    <button className="btn btn-sm btn-info">Advertise</button>
+                    <button
+                      onClick={() => handleAdvertise(product)}
+                      className="btn btn-sm btn-info"
+                    >
+                      Advertise
+                    </button>
                   </td>
                   <td>
                     <button

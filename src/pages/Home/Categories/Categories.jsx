@@ -15,11 +15,13 @@ const Categories = () => {
   // }, []);
   return (
     <div className="py-20">
-      <h2 className="text-2xl text-center">Laptop Brands {}</h2>
-      <div className="flex gap-10 justify-center">
-        <Link to={`category/HP`}>Hp Laptops</Link>
-        <Link to={`category/Dell`}>Dell Laptops</Link>
-        <Link to={`category/Apple`}>Apple Laptops</Link>
+      <h2 className="text-3xl text-center font-semibold my-2">Laptop Brand</h2>
+      <div className="">
+        <ul className="py-4 flex gap-10 justify-center">
+          <Link to={`category/HP`}>Hp Laptop</Link>
+          <Link to={`category/Dell`}>Dell Laptop</Link>
+          <Link to={`category/Apple`}>Apple Laptop</Link>
+        </ul>
       </div>
     </div>
   );
