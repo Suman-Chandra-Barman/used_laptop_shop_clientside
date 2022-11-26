@@ -13,9 +13,9 @@ const Category = () => {
   return (
     <div className="my-20">
       <h3 className="text-3xl font-semibold text-center mb-10">
-        {categoryName} Laptop All Products
+        {categoryName} Laptops
       </h3>
-      <div className="grid md:grid-cols-2 gap-10 ">
+      <div className="grid md:grid-cols-3 gap-7 ">
         {category.map((product) => (
           <CategoryCard
             key={product._id}

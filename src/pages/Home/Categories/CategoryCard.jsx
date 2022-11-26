@@ -13,16 +13,16 @@ const CategoryCard = ({ product, setBookingData }) => {
   return (
     <div className="card card-compact bg-base-100 shadow-xl">
       <figure>
-        <img src={image} alt="Brand" />
+        <img src={image} alt="Brand" className="h-52 w-full" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">Model : {model}</h2>
-        <div className="md:grid grid-cols-2 gap-2 justify-between">
-          <p className="text-lg">Seller Name : {sellerName}</p>
-          <p className="text-lg">Location : {location}</p>
-          <p className="text-lg">Original Price : ${originalPrice}</p>
-          <p className="text-lg">Resale Price : ${resalePrice}</p>
-          <p className="text-lg">Use : ${use}</p>
+        <div className="md:grid grid-cols-1 gap-1 justify-between">
+          <p className="text-base">Seller Name : {sellerName}</p>
+          <p className="text-base">Location : {location}</p>
+          <p className="text-base">Original Price : ${originalPrice}</p>
+          <p className="text-base">Resale Price : ${resalePrice}</p>
+          <p className="text-base">Use : ${use}</p>
         </div>
         <div className="card-actions mt-5">
           <label
