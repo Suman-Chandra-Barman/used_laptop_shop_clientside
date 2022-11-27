@@ -16,6 +16,7 @@ import Blog from "../pages/Blog/Blog";
 import AdminRoute from "./AdminRoute";
 import AllSellers from "../pages/Dashboard/Dashboard/AllSellers/AllSellers";
 import AllBuyers from "../pages/Dashboard/Dashboard/AllBuyers/AllBuyers";
+import Reports from "../pages/Dashboard/Dashboard/Report/Reports";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,15 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllBuyers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/reports",
+        loader: () => fetch("http://localhost:5000/dashboard/reports"),
+        element: (
+          <AdminRoute>
+            <Reports />
           </AdminRoute>
         ),
       },

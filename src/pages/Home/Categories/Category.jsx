@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import BookNowModal from "./BookNowModal";
 import CategoryCard from "./CategoryCard";
@@ -9,6 +10,24 @@ const Category = () => {
 
   const categoryName = category[0].brand;
   console.log(bookingData);
+
+  const handleAddReport = (reportedProduct) => {
+    fetch("http://localhost:5000/dashboard/reports", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(reportedProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          console.log(data);
+          toast.success("Report add successfully");
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="my-20">
@@ -21,6 +40,7 @@ const Category = () => {
             key={product._id}
             product={product}
             setBookingData={setBookingData}
+            handleAddReport={handleAddReport}
           />
         ))}
       </div>

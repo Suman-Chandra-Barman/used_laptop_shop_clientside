@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const CategoryCard = ({ product, setBookingData }) => {
+const CategoryCard = ({ product, setBookingData, handleAddReport }) => {
   const {
     image,
     model,
@@ -18,11 +19,17 @@ const CategoryCard = ({ product, setBookingData }) => {
       <div className="card-body">
         <h2 className="card-title">Model : {model}</h2>
         <div className="md:grid grid-cols-1 gap-1 justify-between">
-          <p className="text-base">Seller Name : {sellerName}</p>
+          <p className="text-base">Seller name : {sellerName}</p>
           <p className="text-base">Location : {location}</p>
-          <p className="text-base">Original Price : ${originalPrice}</p>
-          <p className="text-base">Resale Price : ${resalePrice}</p>
+          <p className="text-base">Original price : ${originalPrice}</p>
+          <p className="text-base">Resale price : ${resalePrice}</p>
           <p className="text-base">Use : {use} year</p>
+          <Link
+            onClick={() => handleAddReport(product)}
+            className="underline text-lg text-error font-semibold"
+          >
+            Report
+          </Link>
         </div>
         <div className="card-actions mt-5">
           <label
