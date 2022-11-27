@@ -39,6 +39,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        userStore(user.displayName, user.email);
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -47,6 +48,24 @@ const Login = () => {
       });
   };
 
+  const userStore = (name, email) => {
+    const user = { name, email, account: "buyer" };
+    console.log("user", user);
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          console.log(data);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="flex justify-center items-center text-black my-20">
       <div className="w-[450px] rounded-2xl shadow-xl p-7">

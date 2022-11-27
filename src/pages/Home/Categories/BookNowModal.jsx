@@ -31,7 +31,7 @@ const BookNowModal = ({ bookingData, setBookingData }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          toast.success("Booking successfully");
+          toast.success("Item is booked successfully");
           from.reset();
           setBookingData(null);
         }

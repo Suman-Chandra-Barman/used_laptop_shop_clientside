@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const AddProducts = () => {
   const { user } = useContext(AuthContext);
-  const imgApi = "7e74aeef43f1128d0f03678519a7718e";
-  const api = process.env.REACT_APP_img_api_key;
+  const navigate = useNavigate();
+
+  const imgApi = process.env.REACT_APP_IMAGEBB_API;
+  console.log("api", imgApi);
 
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -46,6 +49,7 @@ const AddProducts = () => {
             phone,
             location,
             description,
+            verified: user.emailVerified,
           };
           fetch("http://localhost:5000/category", {
             method: "POST",
@@ -57,8 +61,9 @@ const AddProducts = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.acknowledged) {
-                toast.success("Product add successfully");
+                toast.success("Product added successfully");
                 form.reset();
+                navigate("/dashboard/my-products");
               }
             })
             .catch((error) => console.log(error));

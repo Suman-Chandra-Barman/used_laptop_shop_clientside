@@ -25,33 +25,33 @@ const DashboardLayout = () => {
 
         <div className="drawer-side">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 gap-2">
+          <ul className="menu p-4 w-80 gap-5">
             {sellerUser?.account === "buyer" && (
               <>
-                <li>
+                <li className="border-2 rounded-lg border-info">
                   <Link to="/my-orders">My orders</Link>
                 </li>
               </>
             )}
             {sellerUser?.account === "seller" && (
               <>
-                <li>
+                <li className="border-2 rounded-lg border-info">
                   <Link to="/dashboard/add-products">Add A product </Link>
                 </li>
-                <li>
+                <li className="border-2 rounded-lg border-info">
                   <Link to="/dashboard/my-products">My Products</Link>
                 </li>
               </>
             )}
             {sellerUser?.account === "admin" && (
               <>
-                <li>
+                <li className="border-2 rounded-lg border-info">
                   <Link to="/dashboard/all-sellers">All Sellers</Link>
                 </li>
-                <li>
+                <li className="border-2 rounded-lg border-info">
                   <Link to="/dashboard/all-buyers">All Buyers</Link>
                 </li>
-                <li>
+                <li className="border-2 rounded-lg border-info">
                   <Link to="/dashboard/reports">Reported Items</Link>
                 </li>
               </>

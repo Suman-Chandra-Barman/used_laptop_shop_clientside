@@ -44,19 +44,6 @@ const Register = () => {
       });
   };
 
-  const handleGoogleLogin = () => {
-    googleLogin()
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        navigate(from, { replace: true });
-      })
-      .catch((err) => {
-        console.log(err);
-        setSignUpError(err.message);
-      });
-  };
-
   const userStore = (name, email, account) => {
     const user = { name, email, account };
     console.log("user", user);
@@ -164,13 +151,6 @@ const Register = () => {
               Login
             </Link>
           </p>
-          <div className="divider">OR</div>
-          <button
-            onClick={handleGoogleLogin}
-            className="btn btn-outline w-full btn-info"
-          >
-            CONTINUE WITH GOOGLE
-          </button>
         </div>
       </div>
     </div>
