@@ -53,51 +53,47 @@ const MyProducts = () => {
   };
 
   return (
-    <div>
-      <div>
-        <div className="overflow-x-auto">
-          <table className="table w-full">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Price</th>
-                <th>Status </th>
-                <th>Advertise</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product, i) => (
-                <tr key={product._id}>
-                  <td>{i + 1}</td>
-                  <td>{product.brand}</td>
-                  <td>{product.model}</td>
-                  <td>{product.resalePrice}</td>
-                  <td>Available</td>
-                  <td>
-                    <button
-                      onClick={() => handleAdvertise(product)}
-                      className="btn btn-sm btn-info"
-                    >
-                      Advertise
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => handleDeleteProduct(product._id)}
-                      className="btn btn-sm btn-error"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div className="overflow-x-auto">
+      <table className="table w-full">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Status </th>
+            <th>Advertise</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product, i) => (
+            <tr key={product._id}>
+              <td>{i + 1}</td>
+              <td>{product.brand}</td>
+              <td>{product.model}</td>
+              <td>{product.resalePrice}</td>
+              <td>Available</td>
+              <td>
+                <button
+                  onClick={() => handleAdvertise(product)}
+                  className="btn btn-sm btn-info"
+                >
+                  Advertise
+                </button>
+              </td>
+              <td>
+                <button
+                  onClick={() => handleDeleteProduct(product._id)}
+                  className="btn btn-sm btn-error"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
