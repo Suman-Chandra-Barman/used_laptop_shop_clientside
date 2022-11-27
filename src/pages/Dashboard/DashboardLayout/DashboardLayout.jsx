@@ -8,6 +8,7 @@ import Navbar from "../../Shared/Navbar";
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [sellerUser] = useSeller(user?.email);
+  console.log(sellerUser);
   return (
     <div>
       <Navbar />
@@ -39,6 +40,16 @@ const DashboardLayout = () => {
                 </li>
                 <li>
                   <Link to="/dashboard/my-products">My Products</Link>
+                </li>
+              </>
+            )}
+            {sellerUser?.account === "admin" && (
+              <>
+                <li>
+                  <Link to="/dashboard/all-sellers">All Sellers</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/all-buyers">All Buyers</Link>
                 </li>
               </>
             )}

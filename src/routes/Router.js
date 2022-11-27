@@ -13,6 +13,9 @@ import PrivetRoute from "./PrivetRouter";
 import SellerRoute from "./SellerRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Blog from "../pages/Blog/Blog";
+import AdminRoute from "./AdminRoute";
+import AllSellers from "../pages/Dashboard/Dashboard/AllSellers/AllSellers";
+import AllBuyers from "../pages/Dashboard/Dashboard/AllBuyers/AllBuyers";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +77,22 @@ const router = createBrowserRouter([
           <SellerRoute>
             <MyProducts />
           </SellerRoute>
+        ),
+      },
+      {
+        path: "/dashboard/all-sellers",
+        element: (
+          <AdminRoute>
+            <AllSellers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/all-buyers",
+        element: (
+          <AdminRoute>
+            <AllBuyers />
+          </AdminRoute>
         ),
       },
     ],
