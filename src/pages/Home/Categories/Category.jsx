@@ -9,7 +9,6 @@ const Category = () => {
   const [bookingData, setBookingData] = useState(null);
 
   const categoryName = category[0].brand;
-  console.log(bookingData);
 
   const handleAddReport = (reportedProduct) => {
     fetch("https://used-laptop-shop.vercel.app/dashboard/reports", {
