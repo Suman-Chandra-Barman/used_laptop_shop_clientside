@@ -2,9 +2,9 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="mb-20 bg-stone-100 py-10 rounded-2xl">
+    <div className="mb-20 py-10">
       <div className="md:w-2/3 mx-auto">
-        <h2 className="text-3xl font-bold text-center">About Us</h2>
+        <h2 className="text-3xl font-bold text-center">About our shop</h2>
         <p className="mt-5 text-lg text-justify">
           Being a laptop sell platform for foreign trade, usedlaptop.com is
           committed to tapping business opportunities for Chinese suppliers and
