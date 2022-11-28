@@ -102,7 +102,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/reports",
-        loader: () => fetch("http://localhost:5000/dashboard/reports"),
         element: (
           <AdminRoute>
             <Reports />
