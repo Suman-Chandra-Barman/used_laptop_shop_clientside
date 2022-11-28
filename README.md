@@ -9,13 +9,13 @@
   ** Library --- React,  Daisyui
   ** Framework --- Tailwind,
   ** Technologies ---
-                      firebase
-                      react
-                      react-dom
-                      react-hot-toast
-                      react-router-dom
-                      react-query
-                      axios
+                      firebase,
+                      react,
+                      react-dom,
+                      react-hot-toast,
+                      react-router-dom,
+                      react-query,
+                      axios,
                       react-hook-form
 
 
