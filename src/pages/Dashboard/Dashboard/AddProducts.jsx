@@ -51,7 +51,7 @@ const AddProducts = () => {
             description,
             verified: user.emailVerified,
           };
-          fetch("http://localhost:5000/category", {
+          fetch("https://used-laptop-shop.vercel.app/category", {
             method: "POST",
             headers: {
               "content-type": "application/json",

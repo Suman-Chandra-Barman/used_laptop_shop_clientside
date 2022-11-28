@@ -12,7 +12,7 @@ const Category = () => {
   console.log(bookingData);
 
   const handleAddReport = (reportedProduct) => {
-    fetch("http://localhost:5000/dashboard/reports", {
+    fetch("https://used-laptop-shop.vercel.app/dashboard/reports", {
       method: "POST",
       headers: {
         "content-type": "application/json",

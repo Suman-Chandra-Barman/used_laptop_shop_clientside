@@ -21,7 +21,7 @@ const BookNowModal = ({ bookingData, setBookingData }) => {
       price: resalePrice,
       MeetLocation: location,
     };
-    fetch("http://localhost:5000/booking", {
+    fetch("https://used-laptop-shop.vercel.app/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",

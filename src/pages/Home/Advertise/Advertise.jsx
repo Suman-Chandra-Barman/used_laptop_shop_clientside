@@ -6,7 +6,7 @@ const Advertise = () => {
   const [advertise, setAdvertise] = useState([]);
   const [bookingData, setBookingData] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/advertise")
+    fetch("https://used-laptop-shop.vercel.app/advertise")
       .then((res) => res.json())
       .then((data) => {
         setAdvertise(data);

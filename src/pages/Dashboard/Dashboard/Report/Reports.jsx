@@ -7,7 +7,7 @@ const Reports = () => {
   const [isDelete, setIsDelete] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/dashboard/reports")
+    fetch("https://used-laptop-shop.vercel.app/dashboard/reports")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -17,7 +17,7 @@ const Reports = () => {
   }, [isDelete]);
   console.log(reports);
   const handleDeleteReport = (id) => {
-    fetch(`http://localhost:5000/dashboard/reports/${id}`, {
+    fetch(`https://used-laptop-shop.vercel.app/dashboard/reports/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

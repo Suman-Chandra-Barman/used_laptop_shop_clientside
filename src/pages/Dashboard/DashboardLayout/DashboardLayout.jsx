@@ -12,6 +12,9 @@ const DashboardLayout = () => {
   return (
     <div>
       <Navbar />
+      <div>
+        <div></div>
+      </div>
       <div className="drawer drawer-mobile mt-10">
         <input
           id="dashboard-drawer"

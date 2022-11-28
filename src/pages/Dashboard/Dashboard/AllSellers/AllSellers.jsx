@@ -1,12 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import LoaderPage from "../../../../Utilities/LoaderPage";
 
 const AllSellers = () => {
-  const { data: sellers = [], refetch } = useQuery({
+  const {
+    data: sellers = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["buyers"],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/dashboard/all-sellers`);
+        const res = await fetch(
+          `https://used-laptop-shop.vercel.app/dashboard/all-sellers`
+        );
         const data = await res.json();
         return data;
       } catch (error) {
@@ -16,7 +23,7 @@ const AllSellers = () => {
   });
 
   const handleDeleteSeller = (id) => {
-    fetch(`http://localhost:5000/dashboard/all-sellers/${id}`, {
+    fetch(`https://used-laptop-shop.vercel.app/dashboard/all-sellers/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -29,7 +36,9 @@ const AllSellers = () => {
       })
       .catch((error) => console.log(error));
   };
-
+  if (isLoading) {
+    return <LoaderPage />;
+  }
   return (
     <div>
       <h3 className="text-3xl font-semibold text-center my-5">

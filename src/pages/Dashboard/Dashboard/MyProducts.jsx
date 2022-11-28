@@ -6,7 +6,9 @@ const MyProducts = () => {
   const [products, setProducts] = useState([]);
   const [isDelete, setIsDelete] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:5000/seller/products?email=${user?.email}`)
+    fetch(
+      `https://used-laptop-shop.vercel.app/seller/products?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -16,7 +18,7 @@ const MyProducts = () => {
   }, [user?.email, isDelete]);
 
   const handleDeleteProduct = (id) => {
-    fetch(`http://localhost:5000/category/${id}`, {
+    fetch(`https://used-laptop-shop.vercel.app/category/${id}`, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
@@ -38,7 +40,7 @@ const MyProducts = () => {
       productId: product._id,
     };
 
-    fetch("http://localhost:5000/advertise", {
+    fetch("https://used-laptop-shop.vercel.app/advertise", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

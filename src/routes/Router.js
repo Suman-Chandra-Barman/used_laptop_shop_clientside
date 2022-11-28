@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: "/category/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(`https://used-laptop-shop.vercel.app/category/${params.id}`),
         element: (
           <PrivetRoute>
             <Category />

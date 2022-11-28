@@ -51,7 +51,7 @@ const Login = () => {
   const userStore = (name, email) => {
     const user = { name, email, account: "buyer" };
     console.log("user", user);
-    fetch("http://localhost:5000/users", {
+    fetch("https://used-laptop-shop.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

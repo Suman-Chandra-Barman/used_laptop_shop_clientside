@@ -9,7 +9,7 @@ const MyOrders = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/dashboard/my-orders/${user?.email}`
+          `https://used-laptop-shop.vercel.app/dashboard/my-orders/${user?.email}`
         );
         const data = await res.json();
         return data;
