@@ -17,6 +17,7 @@ import AdminRoute from "./AdminRoute";
 import AllSellers from "../pages/Dashboard/Dashboard/AllSellers/AllSellers";
 import AllBuyers from "../pages/Dashboard/Dashboard/AllBuyers/AllBuyers";
 import Reports from "../pages/Dashboard/Dashboard/Report/Reports";
+import MyOrders from "../pages/Dashboard/Dashboard/MyOrders/MyOrders";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,14 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <Dashboard />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/dashboard/my-orders",
+        element: (
+          <PrivetRoute>
+            <MyOrders />
           </PrivetRoute>
         ),
       },

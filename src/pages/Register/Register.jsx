@@ -10,8 +10,7 @@ const Register = () => {
     reset,
     handleSubmit,
   } = useForm();
-  const { createUser, updateUserProfile, googleLogin } =
-    useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
@@ -58,6 +57,7 @@ const Register = () => {
       .then((data) => {
         if (data.acknowledged) {
           console.log(data);
+          navigate(from, { replace: true });
         }
       })
       .catch((err) => console.log(err));

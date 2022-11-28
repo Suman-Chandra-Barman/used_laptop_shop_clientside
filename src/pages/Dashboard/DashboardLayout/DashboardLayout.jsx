@@ -29,7 +29,7 @@ const DashboardLayout = () => {
             {sellerUser?.account === "buyer" && (
               <>
                 <li className="border-2 rounded-lg border-info">
-                  <Link to="/my-orders">My orders</Link>
+                  <Link to="/dashboard/my-orders">My orders</Link>
                 </li>
               </>
             )}

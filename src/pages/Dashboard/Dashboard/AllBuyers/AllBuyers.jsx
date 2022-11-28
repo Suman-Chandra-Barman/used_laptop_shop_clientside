@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
 
 const AllBuyers = () => {
-  const [buyers, setBuyers] = useState([]);
-  const [isDelete, setIsDelete] = useState(false);
-
-  useEffect(() => {
-    fetch("http://localhost:5000/dashboard/all-buyers")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setBuyers(data);
-      })
-      .catch((error) => console.log(error));
-  }, [isDelete]);
+  const { data: buyers = [], refetch } = useQuery({
+    queryKey: ["buyers"],
+    queryFn: async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/dashboard/all-buyers`);
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  });
 
   const handleDeleteBuyer = (id) => {
     fetch(`http://localhost:5000/dashboard/all-buyers/${id}`, {
@@ -24,7 +25,7 @@ const AllBuyers = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setIsDelete();
+        refetch();
       })
       .catch((error) => console.log(error));
   };

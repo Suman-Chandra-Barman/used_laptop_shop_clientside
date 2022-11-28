@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
 
 const AllSellers = () => {
-  const [sellers, setSellers] = useState([]);
-  const [isDelete, setIsDelete] = useState(false);
-
-  useEffect(() => {
-    fetch("http://localhost:5000/dashboard/all-sellers")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setSellers(data);
-      })
-      .catch((error) => console.log(error));
-  }, [isDelete]);
+  const { data: sellers = [], refetch } = useQuery({
+    queryKey: ["buyers"],
+    queryFn: async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/dashboard/all-sellers`);
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  });
 
   const handleDeleteSeller = (id) => {
     fetch(`http://localhost:5000/dashboard/all-sellers/${id}`, {
@@ -24,7 +25,7 @@ const AllSellers = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setIsDelete();
+        refetch();
       })
       .catch((error) => console.log(error));
   };
@@ -41,7 +42,7 @@ const AllSellers = () => {
               <th></th>
               <th className="text-lg">Name</th>
               <th className="text-lg">Email</th>
-              <th className="text-lg">seller Id</th>
+              <th className="text-lg">verified Status</th>
               <th className="text-lg">Delete seller</th>
             </tr>
           </thead>
@@ -51,7 +52,9 @@ const AllSellers = () => {
                 <td>{i + 1}</td>
                 <td>{seller.name}</td>
                 <td>{seller.email}</td>
-                <td>{seller._id}</td>
+                <td>
+                  <button className="btn btn-sm btn-primary">Verified</button>
+                </td>
                 <td>
                   <button
                     onClick={() => handleDeleteSeller(seller._id)}
